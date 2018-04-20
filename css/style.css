@@ -4,25 +4,28 @@
 }
 body {
 	margin: 0;
-	
+
 }
 #carousel {
+	position: relative;
 	margin-right: auto;
 	margin-left: auto;
 	height: 400px;
-	width: 100%;
+	width: 1200px;
 	border: 2px solid #000;
 	overflow: hidden;
 	
 }
 #carousel ul {
+	width: 6000px;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	margin-left: -1200px;
 
 }
 #carousel li {
-	width: 100%;
+	width: 1200px;
 	height: 400px;
 	float: left;
 	list-style: none;
@@ -34,4 +37,43 @@ body {
 	background-size: cover;
 	object-fit: cover;
 	background-position: center
+
+}
+#carousel i  {
+	position: absolute;
+	
+	border-radius: 50%;
+	
+	
+	cursor: pointer;
+	margin: 30px;
+	opacity: 0;
+
+}
+#carousel #left, #carousel #right {
+	top: calc(50% - 30px);
+	padding: 5px;
+	background-color: #fff;
+}
+#carousel #left {
+	left: 0px;
+
+}
+#carousel #right {
+	right: 0px;
+	
+}
+#carousel [class*="circle"] {
+	text-align: center;
+	bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	left: 40%;
+	color: #fff;
+	padding-left: 5px;
+
+}
+}
+#carousel [class*="circle"]:only-child {
+	left:42%;
 }
