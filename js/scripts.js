@@ -47,8 +47,5 @@ $(function(){
 	});
 	var circle = $('[class*="circle"]');
 	console.log(circle);
-	for(var i = 0;i <= circle.length; i++){
-		circle.css("left", 40 + (i*2));
-	}
 });
 
