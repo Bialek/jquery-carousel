@@ -105,6 +105,7 @@ body {
 	padding: 0;
 	margin: 0 3px;
 	cursor: pointer;
+	opacity: 0;
 }
 
 .dots button.active {

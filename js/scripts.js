@@ -23,25 +23,28 @@ $(function(){
 
 	activeDot();
 
+	function clearInterval() {
+		clearTimeout(interval);
+		interval = setInterval(changeSlide, 3000);
+	}
+
 	$("#carousel").append($dots);
 
 	$('button').click(function(){
-		clearTimeout(interval);
+		clearInterval()
 		var moves = $(this).text();
-		moves = parseInt(moves) + (slidesCount - (counter % slidesCount) - 1);
+		moves = parseInt(moves) - (counter % slidesCount) - 1;
+		moves = moves < 0 ? slidesCount + moves : moves;
+
 		for (var i = 0; i < moves; i++) {
 			setTimeout(function () {
-				changeSlide(0.00001);
-			}, i * 1 / moves);
+				changeSlide(500);
+			}, i * 500 / moves);
 		}
 
-		interval = setInterval(changeSlide, 3000);
-
 	});
-
 	function changeSlide(msTime){
 		msTime = msTime || 500;
-		clearTimeout(interval);
 		list.animate({"marginLeft":-2400}, msTime, moveFirstSlide);
 
 		function moveFirstSlide(){
@@ -54,24 +57,24 @@ $(function(){
 			activeDot();
 		}
 
-		interval = setInterval(changeSlide, 3000);
 	};
 
 	$("#carousel").mouseout(function(){
-		$("#carousel i").css("opacity","1");
+		$("#carousel i, #carousel button").css("opacity","0");
 	});
 
 	$("#carousel").mouseover(function(){
-		$("#carousel i").css("opacity","1"); 
+		$("#carousel i, #carousel button").css("opacity","1"); 
 	});
 
 	$("#right").click(function(){
+		clearInterval()
 		changeSlide(500);
 	});
 
 	$("#left").click(function(){
 		list.animate({"marginLeft":0}, 500, moveLastSlide);
-		clearTimeout(interval);
+		clearInterval()
 
 		function moveLastSlide(){
 
@@ -87,9 +90,7 @@ $(function(){
 			list.css({marginLeft:-1200});
 		}
 
-		interval = setInterval(changeSlide, 3000);
 	});
 
-	
 });
 
